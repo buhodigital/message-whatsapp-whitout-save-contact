@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enviar whatsapp</title>
+<!-- production version, optimized for size and speed -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+#app{max-width:400px; margin:50px auto 0px auto;}
+</style>
+</head>
+<body>
+<div id="app">
+  <form class="w3-container">
+    <h3 class="w3-center w3-text-gray">Enviar mensaje de whatsapp sin agregar a contacto o agenda</h3>
+      <div class="w3-row w3-section">
+ 	<input id="numero" class="w3-input" v-model="numero" type="number" placeholder="6681090505">  
+  	<div style="clear:both; visibility:hidden;">.</div>
+  	<input id="mensaje" class="w3-input" v-model="message" placeholder="Mensaje (opcional)">
+      </div>
+      <div v-if="numero!=''">
+	<div class="w3-center w3-section" >
+	<a class="w3-button w3-white w3-border" target="_blank" v-bind:href="'https://api.whatsapp.com/send?phone=52'+numero+'&amp;text='+message"> Enviar a: <b>{{numero}}</b></a>
+        </div>
+      </div>
+	<div v-if="message!=''" class="w3-panel w3-border w3-border-gray">
+	  <p>Mensaje: {{message}}</p> 
+	</div>
+  </form>
+<small class="w3-text-gray">Llena los campos para generar un bot&oacute;n para env&iacute;o de mensaje por whatsapp</small>
+</div>
+</body>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: '',
+    numero: ''
+  }
+});
+
+</script>
+</html>
